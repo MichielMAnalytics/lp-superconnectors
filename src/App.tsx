@@ -1,170 +1,29 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import InfluencerShowcase from './components/InfluencerShowcase';
 
-const DashboardMockup = () => (
-  <div className="bg-white rounded-2xl p-5 shadow-lg max-w-sm">
-    {/* Gender Section */}
-    <div className="mb-5">
-      <h3 className="text-xs font-semibold text-gray-700 mb-2">Gender</h3>
-      <div className="space-y-1.5">
-        <div className="flex items-center justify-between">
-          <span className="text-xs text-gray-600">Female</span>
-          <span className="text-xs font-medium">69.53%</span>
-        </div>
-        <div className="w-full bg-gray-200 rounded-full h-1.5">
-          <div className="bg-blue-400 h-1.5 rounded-full" style={{width: '69.53%'}}></div>
-        </div>
-        <div className="flex items-center justify-between">
-          <span className="text-xs text-gray-600">Male</span>
-          <span className="text-xs font-medium">30.47%</span>
-        </div>
-        <div className="w-full bg-gray-200 rounded-full h-1.5">
-          <div className="bg-red-400 h-1.5 rounded-full" style={{width: '30.47%'}}></div>
-        </div>
-      </div>
-    </div>
 
-    {/* Age & Gender Section */}
-    <div className="mb-5">
-      <h3 className="text-xs font-semibold text-gray-700 mb-2">Age & Gender</h3>
-      <div className="flex justify-end mb-1.5">
-        <div className="flex items-center space-x-2 text-xs">
-          <div className="flex items-center">
-            <div className="w-1.5 h-1.5 bg-red-400 rounded-full mr-1"></div>
-            <span>male</span>
-          </div>
-          <div className="flex items-center">
-            <div className="w-1.5 h-1.5 bg-blue-400 rounded-full mr-1"></div>
-            <span>female</span>
-          </div>
-        </div>
-      </div>
-      <div className="space-y-1.5">
-        {[
-          { age: '45-54', male: 0.27, female: 2.16 },
-          { age: '35-44', male: 4.7, female: 2.16 },
-          { age: '25-34', male: 11.14, female: 3.25 },
-          { age: '18-24', male: 37.43, female: 18.67 },
-          { age: '13-17', male: 15.7, female: 6.72 }
-        ].map((item, index) => (
-          <div key={index} className="flex items-center text-xs">
-            <div className="w-7 text-gray-600">{item.age}</div>
-            <div className="flex-1 flex items-center ml-1.5">
-              <div className="flex-1 bg-gray-200 rounded-full h-1 mr-1">
-                <div className="bg-red-400 h-1 rounded-full" style={{width: `${item.male}%`}}></div>
-              </div>
-              <div className="flex-1 bg-gray-200 rounded-full h-1 ml-1">
-                <div className="bg-blue-400 h-1 rounded-full" style={{width: `${item.female}%`}}></div>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-
-    {/* Countries and Cities */}
-    <div className="grid grid-cols-2 gap-3">
-      <div>
-        <h3 className="text-xs font-semibold text-gray-700 mb-2">Countries</h3>
-        <div className="space-y-1.5 text-xs">
-          <div className="flex justify-between">
-            <span className="text-gray-600">Germany</span>
-            <span>69.53%</span>
-          </div>
-          <div className="w-full bg-gray-200 rounded-full h-0.5">
-            <div className="bg-gray-800 h-0.5 rounded-full" style={{width: '69.53%'}}></div>
-          </div>
-          <div className="flex justify-between">
-            <span className="text-gray-600">Switzerland</span>
-            <span>7.12%</span>
-          </div>
-          <div className="w-full bg-gray-200 rounded-full h-0.5">
-            <div className="bg-gray-600 h-0.5 rounded-full" style={{width: '7.12%'}}></div>
-          </div>
-          <div className="flex justify-between">
-            <span className="text-gray-600">Canada</span>
-            <span>2.81%</span>
-          </div>
-          <div className="w-full bg-gray-200 rounded-full h-0.5">
-            <div className="bg-gray-400 h-0.5 rounded-full" style={{width: '2.81%'}}></div>
-          </div>
-          <div className="flex justify-between">
-            <span className="text-gray-600">United States</span>
-            <span>1.75%</span>
-          </div>
-          <div className="w-full bg-gray-200 rounded-full h-0.5">
-            <div className="bg-gray-300 h-0.5 rounded-full" style={{width: '1.75%'}}></div>
-          </div>
-          <div className="flex justify-between">
-            <span className="text-gray-600">Mexico</span>
-            <span>0.54%</span>
-          </div>
-          <div className="w-full bg-gray-200 rounded-full h-0.5">
-            <div className="bg-gray-200 h-0.5 rounded-full" style={{width: '0.54%'}}></div>
-          </div>
-        </div>
-      </div>
-
-      <div>
-        <h3 className="text-xs font-semibold text-gray-700 mb-2">Cities</h3>
-        <div className="space-y-1.5 text-xs">
-          <div className="flex justify-between">
-            <span className="text-gray-600">Berlin</span>
-            <span>69.53%</span>
-          </div>
-          <div className="w-full bg-gray-200 rounded-full h-0.5">
-            <div className="bg-gray-800 h-0.5 rounded-full" style={{width: '69.53%'}}></div>
-          </div>
-          <div className="flex justify-between">
-            <span className="text-gray-600">Hamburg</span>
-            <span>7.12%</span>
-          </div>
-          <div className="w-full bg-gray-200 rounded-full h-0.5">
-            <div className="bg-gray-600 h-0.5 rounded-full" style={{width: '7.12%'}}></div>
-          </div>
-          <div className="flex justify-between">
-            <span className="text-gray-600">Cologne</span>
-            <span>2.81%</span>
-          </div>
-          <div className="w-full bg-gray-200 rounded-full h-0.5">
-            <div className="bg-gray-400 h-0.5 rounded-full" style={{width: '2.81%'}}></div>
-          </div>
-          <div className="flex justify-between">
-            <span className="text-gray-600">Toronto</span>
-            <span>1.75%</span>
-          </div>
-          <div className="w-full bg-gray-200 rounded-full h-0.5">
-            <div className="bg-gray-300 h-0.5 rounded-full" style={{width: '1.75%'}}></div>
-          </div>
-          <div className="flex justify-between">
-            <span className="text-gray-600">Halifax</span>
-            <span>0.54%</span>
-          </div>
-          <div className="w-full bg-gray-200 rounded-full h-0.5">
-            <div className="bg-gray-200 h-0.5 rounded-full" style={{width: '0.54%'}}></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-);
 
 function App() {
   const [activeTab, setActiveTab] = useState('for companies');
   const tabs = ['for companies', 'for creators'];
 
   return (
-    <div className="h-screen bg-gradient-to-br from-gray-50 to-gray-100 overflow-hidden">
-      {/* Hero Section */}
-      <div className="container mx-auto px-6 py-8 h-full flex flex-col">
+    <div className="min-h-screen" style={{backgroundColor: '#fff2f2'}}>
+      {/* Header */}
+      <header className="w-full px-8 py-6 flex items-center justify-between">
+        {/* Logo */}
+        <div className="flex-shrink-0">
+          <img src="/logo_text.svg" alt="Tom & Jerry" className="h-12" />
+        </div>
 
         {/* Navigation Tabs */}
-        <div className="flex justify-center mb-8">
-          <div className="bg-gray-900 rounded-full p-1 flex space-x-1">
+        <div className="absolute left-1/2 transform -translate-x-1/2">
+          <div className="bg-gray-900 rounded-2xl p-1 flex space-x-1">
             {tabs.map((tab) => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
-                className={`px-8 py-3 rounded-full text-sm font-medium transition-all duration-200 ${
+                className={`px-8 py-3 rounded-xl text-sm font-medium transition-all duration-200 ${
                   activeTab === tab
                     ? 'bg-white text-gray-900 shadow-sm'
                     : 'text-gray-300 hover:text-white'
@@ -175,38 +34,101 @@ function App() {
             ))}
           </div>
         </div>
+      </header>
+
+      {/* Hero Section */}
+      <div className="container mx-auto px-6 py-8 flex flex-col" style={{height: 'calc(100vh - 120px)'}}>
 
         {/* Main Content Area */}
         <div className={`${
           activeTab === 'for companies' 
-            ? 'bg-gradient-to-br from-pink-200 via-purple-200 to-pink-300' 
-            : 'bg-gradient-to-br from-emerald-200 via-teal-200 to-cyan-300'
-        } rounded-3xl p-6 md:p-8 flex-1 flex items-center mx-8 my-6 transition-all duration-500`}>
+            ? 'bg-gradient-to-br from-emerald-200 via-teal-200 to-cyan-300' 
+            : 'bg-gradient-to-br from-pink-200 via-purple-200 to-pink-300'
+        } rounded-3xl p-6 md:p-8 flex-1 flex items-center mx-8 my-6 transition-all duration-500 relative`}>
+          {/* Top Left Name */}
+          <div className="absolute top-0 left-0 w-1/2 h-1/2 flex flex-col items-center justify-center">
+            <div className="text-8xl md:text-9xl font-black text-gray-900 opacity-20 mb-4">
+              {activeTab === 'for companies' ? 'Tom' : 'Jerry'}
+            </div>
+            <div className="inline-flex items-center gap-2 bg-white/90 backdrop-blur-sm rounded-xl px-4 py-2 text-sm font-medium text-gray-800 mb-12">
+              <img src="/white-heavy-check-mark-svgrepo-com.svg" alt="Checkmark" className="w-5 h-5" />
+              <span>
+                {activeTab === 'for companies' ? 'AI Super Connector' : 'AI Headhunter'}
+              </span>
+            </div>
+          </div>
+          
           <div className="grid md:grid-cols-2 gap-8 items-center w-full">
             {/* Left Content */}
             <div className="space-y-4">
               <h2 className="text-2xl md:text-4xl font-black text-gray-900 leading-tight mb-4">
                 {activeTab === 'for companies' 
-                  ? 'We help you connect to the best creators'
-                  : 'We help upcoming creators work with small businesses'
+                  ? 'I help you  connect to the best upcoming creators'
+                  : 'I help you find brand deals that fit your vibe.'
                 }
               </h2>
               
               <p className="text-gray-700 text-lg leading-relaxed">
                 {activeTab === 'for companies'
-                  ? 'We help small businesses connect to upcoming creators. Together, you can bring both your brands to the next level.'
-                  : 'Work together with small businesses and other upcoming creators to create something exciting. Create something that works!'
+                  ? 'I listen to your needs and connect you with the best upcoming creators. Together, we can increase your brand awareness and reach. I\'ll introduce you to the right creators that Jerry is working with.'
+                  : 'I\'ll find you deals and you can continue with what you\'re good at. No need for expensive agencies. I\'ll put you into contact with local businesses that Tom is working with.'
                 }
               </p>
 
-              <button className="bg-gray-900 text-white px-8 py-3 rounded-full font-medium hover:bg-gray-800 transition-colors duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 text-base">
-                {activeTab === 'for companies' ? 'join the waitlist' : 'join now'}
+              <button className="group relative bg-gray-900 text-white px-8 py-4 rounded-2xl font-medium hover:bg-gray-800 transition-all duration-200 text-base flex items-center justify-center min-w-[200px] text-center shadow-[0_6px_0_0_#374151] hover:shadow-[0_2px_0_0_#374151] hover:translate-y-1 active:translate-y-2 active:shadow-[0_0px_0_0_#374151]">
+                <span>{activeTab === 'for companies' ? 'Speak to Tom' : 'Speak to Jerry'}</span>
+                <span className="absolute right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-xl">→</span>
               </button>
             </div>
 
-            {/* Right Content - Dashboard Mockup */}
+            {/* Right Content - Influencer Showcase */}
             <div className="flex justify-center">
-              <DashboardMockup />
+              <div className="blur-md">
+                <InfluencerShowcase activeTab={activeTab} />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* New Section - Only visible when scrolling down */}
+      <div className="container mx-auto px-6 py-8 max-w-4xl">
+        <div className="bg-white rounded-3xl p-8 shadow-lg">
+          <h2 className="text-3xl font-black text-gray-900 mb-4">Meet Tom & Jerry!</h2>
+          <p className="text-lg text-gray-800 mb-6 font-medium">
+            Where upcoming creators and small businesses & startups become iconic duo's.
+          </p>
+          
+          <div className="space-y-6">
+            <p className="text-gray-700">
+              If you're a <span className="bg-pink-200 px-2 py-1 rounded font-medium">rising online creator</span> or a <span className="bg-cyan-200 px-2 py-1 rounded font-medium">business with big vibes</span> and a smaller budget, we're here to spark the perfect match!
+            </p>
+            
+            <p className="text-gray-600 italic">
+              No cringe outreach. No awkward collabs. Just smart, authentic partnerships — powered by AI and made for your vibe.
+            </p>
+            
+            <div className="space-y-4">
+              <p className="text-gray-700">
+                👀 <span className="font-semibold">Creators:</span> link your socials, tell Jerry your story in a engaging phone conversation, and get matched to <span className="bg-pink-200 px-2 py-1 rounded font-medium">brands that make sense</span> for <span className="italic">your profile</span> and <span className="italic">your goals</span>.
+              </p>
+              
+              <p className="text-gray-700">
+                🛍️ <span className="font-semibold">Brands:</span> skip the influencer guessing. Call with Tom, and we'll connect you to the <span className="bg-cyan-200 px-2 py-1 rounded font-medium">right voices</span> who can actually move the needle for <span className="italic">your brand</span> and <span className="italic">your vibe</span>!
+              </p>
+            </div>
+            
+            {/* Buttons */}
+            <div className="flex justify-center gap-4 mt-8">
+              <button className="group relative bg-gray-900 text-white px-8 py-4 rounded-2xl font-medium hover:bg-gray-800 transition-all duration-200 text-base flex items-center justify-center min-w-[200px] text-center shadow-[0_6px_0_0_#374151] hover:shadow-[0_2px_0_0_#374151] hover:translate-y-1 active:translate-y-2 active:shadow-[0_0px_0_0_#374151]">
+                <span>Speak to Tom</span>
+                <span className="absolute right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-xl">→</span>
+              </button>
+              
+              <button className="group relative bg-gray-900 text-white px-8 py-4 rounded-2xl font-medium hover:bg-gray-800 transition-all duration-200 text-base flex items-center justify-center min-w-[200px] text-center shadow-[0_6px_0_0_#374151] hover:shadow-[0_2px_0_0_#374151] hover:translate-y-1 active:translate-y-2 active:shadow-[0_0px_0_0_#374151]">
+                <span>Speak to Jerry</span>
+                <span className="absolute right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-xl">→</span>
+              </button>
             </div>
           </div>
         </div>
