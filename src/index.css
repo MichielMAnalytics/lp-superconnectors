@@ -2,38 +2,69 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  background-color: #fff2f2;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
 @keyframes arrow-to-tess {
   0% {
-    transform: translate(-50%, 0) rotate(0deg);
+    transform: translate(-50%, 0) rotate(0deg) scale(0.8);
     opacity: 0;
   }
-  10% {
+  8% {
+    opacity: 1;
+    transform: translate(-50%, 0) rotate(0deg) scale(1);
+  }
+  20% {
+    transform: translate(100px, -15px) rotate(20deg) scale(1);
     opacity: 1;
   }
   50% {
-    transform: translate(200px, -30px) rotate(45deg);
+    transform: translate(250px, -45px) rotate(45deg) scale(1);
     opacity: 1;
   }
+  80% {
+    transform: translate(350px, -70px) rotate(60deg) scale(0.9);
+    opacity: 0.5;
+  }
   100% {
-    transform: translate(400px, -80px) rotate(90deg);
+    transform: translate(400px, -80px) rotate(75deg) scale(0.7);
     opacity: 0;
   }
 }
 
 @keyframes arrow-to-tom {
   0% {
-    transform: translate(-50%, 0) rotate(0deg);
+    transform: translate(-50%, 0) rotate(0deg) scale(0.8);
     opacity: 0;
   }
-  10% {
+  8% {
+    opacity: 1;
+    transform: translate(-50%, 0) rotate(0deg) scale(1);
+  }
+  20% {
+    transform: translate(-100px, -15px) rotate(-20deg) scale(1);
     opacity: 1;
   }
   50% {
-    transform: translate(-200px, -30px) rotate(-45deg);
+    transform: translate(-250px, -45px) rotate(-45deg) scale(1);
     opacity: 1;
   }
+  80% {
+    transform: translate(-350px, -70px) rotate(-60deg) scale(0.9);
+    opacity: 0.5;
+  }
   100% {
-    transform: translate(-400px, -80px) rotate(-90deg);
+    transform: translate(-400px, -80px) rotate(-75deg) scale(0.7);
     opacity: 0;
   }
 }
