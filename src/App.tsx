@@ -1,13 +1,35 @@
 import { useState, useEffect } from 'react';
 import InfluencerShowcase from './components/InfluencerShowcase';
 
-
-
 function App() {
   const [activeTab, setActiveTab] = useState('for companies');
   const [showArrow, setShowArrow] = useState(false);
   const [arrowDirection, setArrowDirection] = useState('');
   const tabs = ['for companies', 'for creators'];
+
+  useEffect(() => {
+    console.log('=== LOADING VAPI SCRIPT AFTER WIDGETS ===');
+    console.log('Widgets rendered at:', Date.now());
+    console.log('vapi-widget elements in DOM:', document.querySelectorAll('vapi-widget').length);
+    
+    // Load VAPI script AFTER widgets are in DOM
+    const vapiScript = document.createElement('script');
+    vapiScript.src = 'https://unpkg.com/@vapi-ai/client-sdk-react/dist/embed/widget.umd.js';
+    vapiScript.async = true;
+    vapiScript.type = 'text/javascript';
+    
+    vapiScript.onload = function() {
+      console.log('VAPI script loaded after widgets at:', Date.now());
+      console.log('Widgets should now be functional!');
+    };
+    
+    vapiScript.onerror = function() {
+      console.error('VAPI script failed to load');
+    };
+    
+    document.head.appendChild(vapiScript);
+    console.log('VAPI script added to head after widgets');
+  }, []);
 
   const handleTabChange = (tab: string) => {
     if (tab !== activeTab) {
@@ -21,6 +43,7 @@ function App() {
       }, 800);
     }
   };
+
 
   return (
     <div className="min-h-screen" style={{backgroundColor: '#fff2f2'}}>
