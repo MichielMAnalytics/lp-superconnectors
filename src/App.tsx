@@ -49,7 +49,7 @@ function App() {
 
 
   return (
-    <div className="h-screen overflow-hidden" style={{backgroundColor: '#fff2f2'}}>
+    <div className="min-h-screen" style={{backgroundColor: '#fff2f2'}}>
       {/* Navigation Tabs - Desktop only at top */}
       <div className="hidden xl:flex w-full px-8 py-6 items-center justify-center">
         <div className="bg-gray-900 rounded-3xl p-1 flex space-x-1">
@@ -115,14 +115,14 @@ function App() {
       )}
 
       {/* Hero Section */}
-      <div className="container mx-auto px-6 py-2 flex flex-col" style={{height: 'calc(100vh - 120px)'}}>
+      <div className="container mx-auto px-6 py-2 flex flex-col min-h-[calc(100vh-120px)]">
 
         {/* Main Content Area */}
         <div className={`${
           activeTab === 'for companies' 
             ? 'bg-gradient-to-br from-emerald-200 via-teal-200 to-cyan-300' 
             : 'bg-gradient-to-br from-pink-200 via-purple-200 to-pink-300'
-        } rounded-3xl flex-1 mx-2 md:mx-6 lg:mx-8 my-2 transition-all duration-500 relative overflow-hidden`}>
+        } rounded-3xl flex-1 mx-2 md:mx-6 lg:mx-8 my-2 transition-all duration-500 relative overflow-hidden max-h-[80vh] xl:max-h-none`}>
           
           <div className="flex flex-col min-h-full p-4 md:p-8 lg:p-16">
             {/* Header Section with Name and Badge */}
@@ -190,14 +190,6 @@ function App() {
               </div>
             </div>
 
-            {/* Bottom Influencer Showcase - Mobile/Tablet */}
-            <div className="lg:hidden mt-8 relative">
-              <div className="opacity-50 blur-sm pointer-events-none select-none">
-                <InfluencerShowcase activeTab={activeTab} />
-              </div>
-              {/* Overlay to ensure unselectable */}
-              <div className="absolute inset-0 bg-gradient-to-t from-transparent via-transparent to-transparent pointer-events-none"></div>
-            </div>
           </div>
         </div>
       </div>
