@@ -166,6 +166,7 @@ function App() {
                 </a>
 
                 <button 
+                  onClick={() => handleTabChange(activeTab === 'for companies' ? 'for creators' : 'for companies')}
                   className="px-12 py-5 rounded-[32px] font-medium text-base text-gray-600 hover:text-gray-900 transition-colors text-center min-w-[240px] bg-white/50 hover:bg-white/80 backdrop-blur-sm"
                 >
                   {activeTab === 'for companies' 
