@@ -96,21 +96,21 @@ const InfluencerShowcase = ({ activeTab }: InfluencerShowcaseProps) => {
   }, [platform, isForCreators]);
 
   return (
-    <div className="bg-white rounded-2xl p-6 shadow-lg max-w-md">
+    <div className="bg-white rounded-2xl p-6 shadow-lg w-full">
       {/* Platform Toggle */}
-      <div className="flex justify-center mb-6">
-        <div className="bg-gray-100 rounded-2xl p-1 flex space-x-1">
+      <div className="flex justify-center mb-8">
+        <div className="bg-gray-100 rounded-2xl p-1.5 flex space-x-2">
           {availablePlatforms.map((tab) => (
             <button
               key={tab}
               onClick={() => setPlatform(tab as typeof platform)}
-              className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 ${
+              className={`px-5 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 ${
                 platform === tab
                   ? 'bg-white text-gray-900 shadow-sm'
                   : 'text-gray-600 hover:text-gray-900'
               }`}
             >
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2.5">
                 {!isForCreators ? (
                   <img 
                     src={tab === 'tiktok' ? '/tiktok.png' : '/insta.png'} 
@@ -135,13 +135,13 @@ const InfluencerShowcase = ({ activeTab }: InfluencerShowcaseProps) => {
 
       {/* Specialized Filters - Only for Companies */}
       {!isForCreators && (
-        <div className="mb-6">
-          <div className="flex flex-wrap gap-2 justify-center">
+        <div className="mb-8">
+          <div className="flex flex-wrap gap-2.5 justify-center">
             {specializedFilters.map((filter) => (
               <button
                 key={filter.id}
                 onClick={() => setSelectedFilter(filter.id)}
-                className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all duration-200 flex items-center gap-1.5 ${
+                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 flex items-center gap-2 ${
                   selectedFilter === filter.id
                     ? 'bg-gray-900 text-white'
                     : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
@@ -156,20 +156,20 @@ const InfluencerShowcase = ({ activeTab }: InfluencerShowcaseProps) => {
       )}
 
       {/* Cards */}
-      <div className="space-y-4">
+      <div className="space-y-5">
         {(isForCreators ? (currentData as any)[platform] : getFilteredCreators())?.slice(0, 3)?.map((item: any, index: number) => (
-          <div key={index} className="bg-gray-50 rounded-xl p-4 hover:bg-gray-100 transition-all duration-200">
-            <div className="flex items-center space-x-3">
-              <div className="w-12 h-12 bg-gradient-to-br from-purple-400 to-pink-400 rounded-xl flex items-center justify-center text-xl">
+          <div key={index} className="bg-gray-50 rounded-xl p-5 hover:bg-gray-100 transition-all duration-200">
+            <div className="flex items-center space-x-4">
+              <div className="w-14 h-14 bg-gradient-to-br from-purple-400 to-pink-400 rounded-xl flex items-center justify-center text-2xl">
                 {item.avatar}
               </div>
               <div className="flex-1">
-                <h4 className="font-semibold text-gray-900 text-sm">{item.name}</h4>
-                <p className="text-xs text-gray-600 mb-1">
+                <h4 className="font-semibold text-gray-900 text-base mb-1">{item.name}</h4>
+                <p className="text-sm text-gray-600 mb-2">
                   {isForCreators ? item.type : ''}
                   {item.location && `${isForCreators ? ' • ' : ''}${item.location}`}
                 </p>
-                <div className="flex space-x-4 text-xs">
+                <div className="flex space-x-4 text-sm">
                   {isForCreators ? (
                     <>
                       <span className="text-gray-700"><strong>{item.budget}</strong> budget</span>
@@ -184,7 +184,7 @@ const InfluencerShowcase = ({ activeTab }: InfluencerShowcaseProps) => {
                 </div>
               </div>
               <div className="text-right">
-                <span className="inline-flex items-center px-2 py-1 rounded-lg text-xs font-medium bg-green-100 text-green-700">
+                <span className="inline-flex items-center px-3 py-1.5 rounded-lg text-sm font-medium bg-green-100 text-green-700">
                   Available
                 </span>
               </div>
@@ -194,8 +194,8 @@ const InfluencerShowcase = ({ activeTab }: InfluencerShowcaseProps) => {
       </div>
 
       {/* View More Button */}
-      <div className="mt-6 text-center">
-        <button className="text-sm text-gray-600 hover:text-gray-900 font-medium">
+      <div className="mt-8 text-center">
+        <button className="text-base text-gray-600 hover:text-gray-900 font-medium">
           View all {isForCreators ? `${platform} businesses` : 
                     `${specializedFilters.find(f => f.id === selectedFilter)?.label.toLowerCase()} creators`} →
         </button>

@@ -51,7 +51,7 @@ function App() {
   return (
     <div className="min-h-screen" style={{backgroundColor: '#fff2f2'}}>
       {/* Navigation Tabs - Desktop only at top */}
-      <div className="hidden xl:flex w-full px-8 py-6 items-center justify-center">
+      <div className="hidden xl:flex w-full px-8 py-3 items-center justify-center">
         <div className="bg-gray-900 rounded-3xl p-1 flex space-x-1">
           {tabs.map((tab) => (
             <button
@@ -70,7 +70,7 @@ function App() {
       </div>
 
       {/* Navigation Tabs - Mobile/Tablet, positioned below widgets */}
-      <div className="xl:hidden w-full px-8 py-6 flex items-center justify-center" style={{ marginTop: '80px' }}>
+      <div className="xl:hidden w-full px-8 py-3 flex items-center justify-center" style={{ marginTop: '80px' }}>
         <div className="bg-gray-900 rounded-3xl p-1 flex space-x-1">
           {tabs.map((tab) => (
             <button
@@ -115,81 +115,93 @@ function App() {
       )}
 
       {/* Hero Section */}
-      <div className="container mx-auto px-6 py-2 flex flex-col min-h-[calc(100vh-120px)]">
-
-        {/* Main Content Area */}
+      <div className="container mx-auto px-6 py-12">
         <div className={`${
           activeTab === 'for companies' 
             ? 'bg-gradient-to-br from-emerald-200 via-teal-200 to-cyan-300' 
             : 'bg-gradient-to-br from-pink-200 via-purple-200 to-pink-300'
-        } rounded-3xl flex-1 mx-2 md:mx-6 lg:mx-8 my-2 transition-all duration-500 relative overflow-hidden max-h-[80vh] xl:max-h-none`}>
-          
-          <div className="flex flex-col min-h-full p-4 md:p-8 lg:p-16">
-            {/* Header Section with Name and Badge */}
-            <div className="text-center mb-8 lg:mb-12 relative">
-              {/* Background Name */}
-              <div className="text-6xl md:text-7xl lg:text-8xl font-black text-gray-900 opacity-15 leading-none mb-4">
+        } rounded-3xl transition-all duration-500 overflow-hidden`}>
+          <div className="max-w-4xl mx-auto px-8 py-16">
+            <div className="text-center space-y-6">
+              {/* Name */}
+              <h1 className="text-7xl md:text-8xl font-black text-gray-900">
                 {activeTab === 'for companies' ? 'Tom' : 'Tess'}
-              </div>
-              
+              </h1>
+
               {/* AI Badge */}
               <div className="flex justify-center">
-                <div className="inline-flex items-center gap-2 bg-white/95 backdrop-blur-sm rounded-full px-4 py-2 md:px-5 md:py-3 text-sm md:text-base font-semibold text-gray-800 shadow-sm">
-                  <img src="/Twitter_Verified_Badge.png" alt="Verified" className="w-4 h-4 md:w-5 md:h-5" />
+                <div className="inline-flex items-center gap-2 bg-white/95 backdrop-blur-sm rounded-full px-5 py-3 text-base font-semibold text-gray-800 shadow-sm">
+                  <img src="/Twitter_Verified_Badge.png" alt="Verified" className="w-5 h-5" />
                   <span>
                     {activeTab === 'for companies' ? 'AI Super Connector' : 'AI Headhunter'}
                   </span>
                 </div>
               </div>
-            </div>
 
-            {/* Main Content */}
-            <div className="flex-1 flex flex-col xl:grid xl:grid-cols-2 xl:gap-12">
-              {/* Text Content */}
-                              <div className="text-center xl:text-left space-y-6">
-                <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-black text-gray-900 leading-tight">
+              {/* Main Headline */}
+              <h2 className="text-4xl md:text-6xl font-black text-gray-900 max-w-3xl mx-auto leading-tight mt-16">
+                {activeTab === 'for companies' 
+                  ? 'I help you connect to the best upcoming creators'
+                  : 'I help you find brand deals that fit your vibe'
+                }
+              </h2>
+
+              {/* Description */}
+              <p className="text-gray-700 text-xl md:text-2xl leading-relaxed max-w-2xl mx-auto">
+                {activeTab === 'for companies'
+                  ? 'I listen to your needs and connect you with the best upcoming creators. Together, we can increase your brand awareness and reach. I\'ll introduce you to the right creators that Tess is working with. 🚀'
+                  : 'I\'ll find you deals and you can continue with what you\'re good at. No need for expensive agencies. I\'ll put you into contact with local businesses that Tom is working with. ✨'
+                }
+              </p>
+
+              {/* Action Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8 mb-32">
+                <a 
+                  href={activeTab === 'for companies' ? 'https://tally.so/r/mDRJXX' : 'https://tally.so/r/w77VJ6'}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group bg-gray-900 text-white px-12 py-5 rounded-[32px] font-medium text-base text-center hover:bg-gray-800 transition-all duration-200 min-w-[240px] shadow-[0_2px_0_0_rgba(0,0,0,0.1)]"
+                >
+                  Sign up to waitlist
+                </a>
+
+                <button 
+                  className="px-12 py-5 rounded-[32px] font-medium text-base text-gray-600 hover:text-gray-900 transition-colors text-center min-w-[240px] bg-white/50 hover:bg-white/80 backdrop-blur-sm"
+                >
                   {activeTab === 'for companies' 
-                    ? 'I help you connect to the best upcoming creators'
-                    : 'I help you find brand deals that fit your vibe.'
+                    ? 'Not a company? Switch to creator mode →'
+                    : 'Not a creator? Switch to company mode →'
                   }
-                </h2>
-                
-                <p className="text-gray-700 text-base md:text-lg lg:text-xl leading-relaxed max-w-lg mx-auto xl:mx-0">
-                  {activeTab === 'for companies'
-                    ? 'I listen to your needs and connect you with the best upcoming creators. Together, we can increase your brand awareness and reach. I\'ll introduce you to the right creators that Tess is working with.'
-                    : 'I\'ll find you deals and you can continue with what you\'re good at. No need for expensive agencies. I\'ll put you into contact with local businesses that Tom is working with.'
-                  }
-                </p>
-
-                <div className="pt-4 xl:pt-6">
-                  <a 
-                    href={activeTab === 'for companies' ? 'https://tally.so/r/mDRJXX' : 'https://tally.so/r/w77VJ6'}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group relative bg-gray-900 text-white px-6 py-4 md:px-8 md:py-5 rounded-3xl font-semibold hover:bg-gray-800 transition-all duration-200 text-sm md:text-base inline-flex items-center justify-center min-w-[200px] shadow-[0_4px_0_0_#374151] md:shadow-[0_6px_0_0_#374151] hover:shadow-[0_2px_0_0_#374151] hover:translate-y-1 active:translate-y-2 active:shadow-[0_0px_0_0_#374151]"
-                  >
-                    <span>{activeTab === 'for companies' ? 'Join the waitlist of Tom' : 'Join the waitlist of Tess'}</span>
-                    <span className="ml-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-xl">→</span>
-                  </a>
-                </div>
-
-                {/* Spacer to push InfluencerShowcase down */}
-                <div className="h-16"></div>
-                
-                {/* InfluencerShowcase - appears under button, cut off by card boundary */}
-                <div className="opacity-40 blur-sm flex justify-center">
-                  <InfluencerShowcase activeTab={activeTab} />
-                </div>
+                </button>
               </div>
 
-              {/* Right Content - Influencer Showcase - Desktop only */}
-              <div className="hidden xl:flex justify-center xl:justify-end">
-                <div className="opacity-40 blur-sm pointer-events-none select-none">
-                  <InfluencerShowcase activeTab={activeTab} />
+              {/* Showcase Section - Temporarily Hidden
+              <div className="grid grid-cols-1 xl:grid-cols-12 gap-12 items-start">
+                <div className="xl:col-span-7 space-y-6 text-left">
+                  <h3 className="text-3xl md:text-4xl font-bold text-gray-900">
+                    {activeTab === 'for companies' 
+                      ? 'See the creators I\'m working with'
+                      : 'Check out available opportunities'
+                    }
+                  </h3>
+                  <p className="text-xl text-gray-700 leading-relaxed">
+                    {activeTab === 'for companies'
+                      ? 'I\'m constantly discovering and vetting new creators. Here\'s a preview of the talent pool you\'ll have access to.'
+                      : 'These are some of the brands currently looking for creators like you. New opportunities are added daily.'
+                    }
+                  </p>
+                </div>
+
+                <div className="xl:col-span-5 relative">
+                  <div className="opacity-40 blur-sm">
+                    <div className="max-w-md xl:max-w-none">
+                      <InfluencerShowcase activeTab={activeTab} />
+                    </div>
+                  </div>
                 </div>
               </div>
+              */}
             </div>
-
           </div>
         </div>
       </div>
