@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is "Tom & Tess" - a React TypeScript landing page for an AI-powered platform that connects content creators with businesses. The application serves as a dual-sided marketplace where companies can find upcoming creators and creators can find brand partnerships.
+This is "Tom & Tess" - a React TypeScript landing page for an AI-powered platform that connects content freelancers with businesses. The application serves as a dual-sided marketplace where companies can find upcoming freelancers and freelancers can find brand partnerships.
 
 ## Development Commands
 
@@ -26,23 +26,23 @@ This is "Tom & Tess" - a React TypeScript landing page for an AI-powered platfor
 ### Core Components
 
 **App.tsx** - Main application container with:
-- Tab-based navigation (`for companies` vs `for creators`)
-- Dual personality system (Tom for companies, Tess for creators)
+- Tab-based navigation (`for companies` vs `for freelancers`)
+- Dual personality system (Tom for companies, Tess for freelancers)
 - Dynamic gradient backgrounds and content based on active tab
 - External form integration via Tally forms
 
 **InfluencerShowcase.tsx** - Complex showcase component featuring:
-- Platform filtering (TikTok/Instagram for companies, Restaurants/Retail for creators)
+- Platform filtering (TikTok/Instagram for companies, Restaurants/Retail for freelancers)
 - Specialized content filters (e.g., "Airplane Listeners", "BookTok", "Aesthetic Lifestyle")
-- Mock data for creators and businesses with engagement metrics
+- Mock data for freelancers and businesses with engagement metrics
 - Dynamic filtering system based on tags
 
 ### Key Features
 
-- **Dual-sided Interface**: Single app serving both companies and creators with different UI/UX
+- **Dual-sided Interface**: Single app serving both companies and freelancers with different UI/UX
 - **Dynamic Content**: All text, gradients, and showcase data changes based on active tab
-- **Mock Data System**: Realistic creator profiles and business listings with engagement metrics
-- **Filter System**: Sophisticated tag-based filtering for matching creators with specific niches
+- **Mock Data System**: Realistic freelancer profiles and business listings with engagement metrics
+- **Filter System**: Sophisticated tag-based filtering for matching freelancers with specific niches
 - **External Integration**: Links to Tally forms for lead capture
 
 ### Asset Management

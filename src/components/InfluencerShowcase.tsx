@@ -5,15 +5,15 @@ interface InfluencerShowcaseProps {
 }
 
 const InfluencerShowcase = ({ activeTab }: InfluencerShowcaseProps) => {
-  const isForCreators = activeTab === 'for creators';
+  const isForfreelancers = activeTab === 'for freelancers';
   const [platform, setPlatform] = useState<'tiktok' | 'instagram' | 'restaurants' | 'retail'>(
-    isForCreators ? 'restaurants' : 'tiktok'
+    isForfreelancers ? 'restaurants' : 'tiktok'
   );
   const [selectedFilter, setSelectedFilter] = useState<string>(
-    isForCreators ? 'restaurants' : (platform === 'tiktok' ? 'airplanelistener' : 'aesthetic')
+    isForfreelancers ? 'restaurants' : (platform === 'tiktok' ? 'airplanelistener' : 'aesthetic')
   );
   
-  // Specialized filters for companies to find very specific creators
+  // Specialized filters for companies to find very specific freelancers
   const tiktokFilters = [
     { id: 'airplanelistener', label: 'Airplane Listeners', emoji: '✈️' },
     { id: 'sundayreset', label: 'Sunday Reset', emoji: '🏠' },
@@ -71,47 +71,52 @@ const InfluencerShowcase = ({ activeTab }: InfluencerShowcaseProps) => {
     ]
   };
 
-  const currentData = isForCreators ? businesses : influencers;
-  const availablePlatforms = isForCreators ? ['restaurants', 'retail'] : ['tiktok', 'instagram'];
+  const currentData = isForfreelancers ? businesses : influencers;
+  const availablePlatforms = isForfreelancers ? ['restaurants', 'retail'] : ['tiktok', 'instagram'];
 
-  // Filter creators based on selected filter
-  const getFilteredCreators = () => {
-    if (isForCreators) return currentData;
+  // Filter freelancers based on selected filter
+  const getFilteredfreelancers = () => {
+    if (isForfreelancers) return currentData;
     
-    const creators = (currentData as any)[platform];
-    return creators?.filter((creator: any) => creator.tags?.includes(selectedFilter)) || [];
+    const freelancers = (currentData as any)[platform];
+    return freelancers?.filter((freelancer: any) => freelancer.tags?.includes(selectedFilter)) || [];
   };
 
   // Reset platform and filter when activeTab changes
   useEffect(() => {
-    setPlatform(isForCreators ? 'restaurants' : 'tiktok');
-    setSelectedFilter(isForCreators ? 'restaurants' : 'airplanelistener');
-  }, [isForCreators]);
+    setPlatform(isForfreelancers ? 'restaurants' : 'tiktok');
+    setSelectedFilter(isForfreelancers ? 'restaurants' : 'airplanelistener');
+  }, [isForfreelancers]);
 
   // Update filter when platform changes
   useEffect(() => {
-    if (!isForCreators) {
+    if (!isForfreelancers) {
       setSelectedFilter(platform === 'tiktok' ? 'airplanelistener' : 'aesthetic');
     }
-  }, [platform, isForCreators]);
+  }, [platform, isForfreelancers]);
 
   return (
-    <div className="bg-white rounded-2xl p-6 shadow-lg w-full">
+    <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 w-full">
       {/* Platform Toggle */}
       <div className="flex justify-center mb-8">
-        <div className="bg-gray-100 rounded-2xl p-1.5 flex space-x-2">
+        <div className="bg-gray-50 rounded-2xl p-1.5 flex space-x-2 border border-gray-100">
           {availablePlatforms.map((tab) => (
             <button
               key={tab}
               onClick={() => setPlatform(tab as typeof platform)}
               className={`px-5 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 ${
                 platform === tab
-                  ? 'bg-white text-gray-900 shadow-sm'
+                  ? `${isForfreelancers 
+                      ? 'bg-white text-gray-900 shadow-sm' 
+                      : platform === 'tiktok' 
+                        ? 'bg-indigo-500 text-white'
+                        : 'bg-fuchsia-500 text-white'
+                    }`
                   : 'text-gray-600 hover:text-gray-900'
               }`}
             >
               <div className="flex items-center gap-2.5">
-                {!isForCreators ? (
+                {!isForfreelancers ? (
                   <img 
                     src={tab === 'tiktok' ? '/tiktok.png' : '/insta.png'} 
                     alt={tab === 'tiktok' ? 'TikTok' : 'Instagram'} 
@@ -134,7 +139,7 @@ const InfluencerShowcase = ({ activeTab }: InfluencerShowcaseProps) => {
       </div>
 
       {/* Specialized Filters - Only for Companies */}
-      {!isForCreators && (
+      {!isForfreelancers && (
         <div className="mb-8">
           <div className="flex flex-wrap gap-2.5 justify-center">
             {specializedFilters.map((filter) => (
@@ -143,8 +148,8 @@ const InfluencerShowcase = ({ activeTab }: InfluencerShowcaseProps) => {
                 onClick={() => setSelectedFilter(filter.id)}
                 className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 flex items-center gap-2 ${
                   selectedFilter === filter.id
-                    ? 'bg-gray-900 text-white'
-                    : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                    ? `${platform === 'tiktok' ? 'bg-indigo-500' : 'bg-fuchsia-500'} text-white`
+                    : 'bg-gray-50 text-gray-600 hover:text-gray-900 border border-gray-100'
                 }`}
               >
                 <span>{filter.emoji}</span>
@@ -157,20 +162,26 @@ const InfluencerShowcase = ({ activeTab }: InfluencerShowcaseProps) => {
 
       {/* Cards */}
       <div className="space-y-5">
-        {(isForCreators ? (currentData as any)[platform] : getFilteredCreators())?.slice(0, 3)?.map((item: any, index: number) => (
-          <div key={index} className="bg-gray-50 rounded-xl p-5 hover:bg-gray-100 transition-all duration-200">
+        {(isForfreelancers ? (currentData as any)[platform] : getFilteredfreelancers())?.slice(0, 3)?.map((item: any, index: number) => (
+          <div key={index} className="bg-gray-50 rounded-xl p-5 hover:bg-gray-100 transition-all duration-200 border border-gray-100">
             <div className="flex items-center space-x-4">
-              <div className="w-14 h-14 bg-gradient-to-br from-purple-400 to-pink-400 rounded-xl flex items-center justify-center text-2xl">
+              <div className={`w-14 h-14 ${
+                isForfreelancers
+                  ? 'bg-gradient-to-br from-gray-100 to-gray-200'
+                  : platform === 'tiktok'
+                    ? 'bg-gradient-to-br from-indigo-100 to-indigo-200'
+                    : 'bg-gradient-to-br from-fuchsia-100 to-fuchsia-200'
+              } rounded-xl flex items-center justify-center text-2xl`}>
                 {item.avatar}
               </div>
               <div className="flex-1">
                 <h4 className="font-semibold text-gray-900 text-base mb-1">{item.name}</h4>
-                <p className="text-sm text-gray-600 mb-2">
-                  {isForCreators ? item.type : ''}
-                  {item.location && `${isForCreators ? ' • ' : ''}${item.location}`}
+                <p className="text-sm text-gray-500 mb-2">
+                  {isForfreelancers ? item.type : ''}
+                  {item.location && `${isForfreelancers ? ' • ' : ''}${item.location}`}
                 </p>
                 <div className="flex space-x-4 text-sm">
-                  {isForCreators ? (
+                  {isForfreelancers ? (
                     <>
                       <span className="text-gray-700"><strong>{item.budget}</strong> budget</span>
                       <span className="text-orange-600"><strong>Due {item.deadline}</strong></span>
@@ -178,13 +189,15 @@ const InfluencerShowcase = ({ activeTab }: InfluencerShowcaseProps) => {
                   ) : (
                     <>
                       <span className="text-gray-700"><strong>{item.followers}</strong> followers</span>
-                      <span className="text-green-600"><strong>{item.engagement}</strong> engagement</span>
+                      <span className={platform === 'tiktok' ? 'text-indigo-600' : 'text-fuchsia-600'}>
+                        <strong>{item.engagement}</strong> engagement
+                      </span>
                     </>
                   )}
                 </div>
               </div>
               <div className="text-right">
-                <span className="inline-flex items-center px-3 py-1.5 rounded-lg text-sm font-medium bg-green-100 text-green-700">
+                <span className="inline-flex items-center px-3 py-1.5 rounded-lg text-sm font-medium bg-indigo-50 text-indigo-600 border border-indigo-100">
                   Available
                 </span>
               </div>
@@ -195,9 +208,12 @@ const InfluencerShowcase = ({ activeTab }: InfluencerShowcaseProps) => {
 
       {/* View More Button */}
       <div className="mt-8 text-center">
-        <button className="text-base text-gray-600 hover:text-gray-900 font-medium">
-          View all {isForCreators ? `${platform} businesses` : 
-                    `${specializedFilters.find(f => f.id === selectedFilter)?.label.toLowerCase()} creators`} →
+        <button className="text-base text-gray-600 hover:text-gray-900 font-medium group inline-flex items-center gap-2">
+          <span>View all {isForfreelancers ? `${platform} businesses` : 
+                    `${specializedFilters.find(f => f.id === selectedFilter)?.label.toLowerCase()} freelancers`}</span>
+          <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
         </button>
       </div>
     </div>
