@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is "Tom & Tess" - a React TypeScript landing page for an AI-powered platform that connects content freelancers with businesses. The application serves as a dual-sided marketplace where companies can find upcoming freelancers and freelancers can find brand partnerships.
+This is "Unbound" - a React TypeScript landing page for an AI-powered platform that connects applicants with businesses.
 
 ## Development Commands
 

@@ -1,3 +1,4 @@
+import BrandBadge from './BrandBadge';
 interface ExplanationSectionProps {
   activeTab: string;
 }
@@ -11,12 +12,7 @@ const ExplanationSection = ({ activeTab }: ExplanationSectionProps) => {
         <div className="max-w-6xl mx-auto px-12 md:px-16 py-24">
           {/* Section Title */}
           <div className="space-y-4 mb-24">
-            <div className="inline-flex items-center gap-2 bg-black/10 backdrop-blur-sm rounded-full pl-2 pr-4 py-1.5 text-sm font-medium text-white/90 border border-white/20">
-              <div className="bg-white/20 rounded-full w-6 h-6 flex items-center justify-center backdrop-blur-sm">
-                <span className="text-white/90 text-xs">→</span>
-              </div>
-              How it works
-            </div>
+            <BrandBadge label="How it works" />
             <h2 className="text-4xl md:text-5xl font-black text-gray-900 tracking-tight">
               {isCompanies
                 ? "Connect with the perfect freelancers"
@@ -36,8 +32,8 @@ const ExplanationSection = ({ activeTab }: ExplanationSectionProps) => {
                 </div>
                 <p className="text-gray-500 text-lg leading-relaxed">
                   {isCompanies
-                    ? "Reach out with your goals and what type of freelancers you're looking for"
-                    : "Tell me about your content and what kind of brands you want to work with"
+                    ? "Reach out with your goals and what type of talent you're looking for"
+                    : "Tell me about your work and what kind of brands you want to work with"
                   }
                 </p>
               </div>
@@ -70,7 +66,7 @@ const ExplanationSection = ({ activeTab }: ExplanationSectionProps) => {
                 <p className="text-gray-500 text-lg leading-relaxed">
                   {isCompanies
                     ? "No pointless meetings. Just a focused call to understand your goals and values."
-                    : "No bureaucracy. Just a real conversation about your creative direction."
+                    : "No bureaucracy. Just a real conversation about your direction and opportunities."
                   }
                 </p>
               </div>
@@ -107,7 +103,7 @@ const ExplanationSection = ({ activeTab }: ExplanationSectionProps) => {
                 </div>
                 <p className="text-gray-500 text-lg leading-relaxed">
                   {isCompanies
-                    ? "Direct introductions to freelancers who'll champion your brand. No middlemen. No markup."
+                    ? "Direct introductions to talent who'll champion your brand. No middlemen. No markup."
                     : "Direct access to brands that respect your worth. No cuts. No compromises."
                   }
                 </p>
@@ -128,8 +124,8 @@ const ExplanationSection = ({ activeTab }: ExplanationSectionProps) => {
                     <div className="bg-white rounded-xl p-6 border border-black/[0.03]">
                       <p className="text-gray-500 text-lg">
                         {isCompanies
-                          ? "Found a freelancer who embodies your brand's future vision."
-                          : "Found a brand that's ready for your creative revolution."
+                          ? "Found talent who embodies your brand's future vision."
+                          : "Found a brand that's ready for your future vision."
                         }
                       </p>
                     </div>

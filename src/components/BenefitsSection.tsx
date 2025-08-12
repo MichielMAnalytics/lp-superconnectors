@@ -39,8 +39,8 @@ const BenefitsSection = ({ activeTab }: BenefitsSectionProps) => {
                 </h3>
                 <p className="text-gray-700 leading-relaxed">
                   {activeTab === 'for companies'
-                    ? 'I analyze your brand values and target audience to find freelancers who truly resonate with your message.'
-                    : 'I help you find brand partnerships that align with your content style and audience interests.'
+                    ? 'I analyze your brand values and target audience to find talent who truly resonate with your message.'
+                    : 'I help you find brand partnerships that align with your work and audience interests.'
                   }
                 </p>
               </div>
@@ -81,7 +81,7 @@ const BenefitsSection = ({ activeTab }: BenefitsSectionProps) => {
                 </h3>
                 <p className="text-gray-700 leading-relaxed">
                   {activeTab === 'for companies'
-                    ? 'Launch your influencer campaigns quickly with our streamlined process and vetted freelancers.'
+                    ? 'Launch your campaigns quickly with our streamlined process and vetted talent.'
                     : 'Build lasting relationships with brands that can lead to ongoing partnerships and steady income.'
                   }
                 </p>
@@ -102,8 +102,8 @@ const BenefitsSection = ({ activeTab }: BenefitsSectionProps) => {
                 </h3>
                 <p className="text-gray-700 leading-relaxed">
                   {activeTab === 'for companies'
-                    ? 'Work with pre-vetted freelancers who have proven track records and authentic engagement.'
-                    : 'Focus on creating great content while I handle the negotiations and administrative work.'
+                    ? 'Work with pre-vetted talent who have proven track records and authentic engagement.'
+                    : 'Focus on doing what you do best while I handle the introductions and admin.'
                   }
                 </p>
               </div>
