@@ -1,4 +1,17 @@
+import { useEffect } from 'react';
+
 const ManifestoSection = () => {
+  useEffect(() => {
+    const src = 'https://unpkg.com/@vapi-ai/client-sdk-react/dist/embed/widget.umd.js';
+    if (!document.querySelector(`script[src="${src}"]`)) {
+      const vapiScript = document.createElement('script');
+      vapiScript.src = src;
+      vapiScript.async = true;
+      vapiScript.type = 'text/javascript';
+      document.head.appendChild(vapiScript);
+    }
+  }, []);
+
   return (
     <div className="container mx-auto px-6 py-24 md:py-32">
       <div className="max-w-4xl mx-auto text-center">

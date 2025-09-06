@@ -39,7 +39,7 @@ const HeroSection = ({ activeTab }: HeroSectionProps) => {
                     unbound
                   </h1>
                   <p className="text-gray-900 text-xl md:text-xl leading-relaxed drop-shadow-[0_1px_1px_rgba(0,0,0,0.25)]">
-                  Net is your AI-Powered Career Coach. Chat, talk, and get matched to top companies.
+                  The last recruiter you'll ever need.
                   </p>
                 </div>
               </div>
