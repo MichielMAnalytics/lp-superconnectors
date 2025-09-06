@@ -20,6 +20,9 @@ declare global {
         'chat-placeholder'?: string;
         'voice-show-transcript'?: string;
         'consent-required'?: string;
+        'consent-title'?: string;
+        'consent-content'?: string;
+        'consent-storage-key'?: string;
       };
     }
   }
