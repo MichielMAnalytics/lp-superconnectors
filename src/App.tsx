@@ -62,7 +62,7 @@ function App() {
     <div className="min-h-screen" style={{backgroundColor: '#f8fafc'}}>
       {/* ElevenLabs widget pinned to the left, lifted above Vapi bubble */}
       <div style={{ position: 'fixed', left: '20px', bottom: 'calc(env(safe-area-inset-bottom, 0px) + 120px)', zIndex: 9999, pointerEvents: 'auto' }}>
-        <elevenlabs-convai agent-id="agent_7501k4m4z5mqf8svppcnhs1ga65x"></elevenlabs-convai>
+        <elevenlabs-convai agent-id="agent_1901k4pyqrb8fv3apkenzpv3hvc7"></elevenlabs-convai>
       </div>
 
       <Routes>
